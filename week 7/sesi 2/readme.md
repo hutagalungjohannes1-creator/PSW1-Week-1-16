@@ -62,5 +62,68 @@ Seluruh aset gambar dan stylesheet berhasil termuat dengan lancar tanpa ada kode
 Gambar aset tampil dengan rapi pada layar browser tanpa broken image.
 Penggunaan jalur relatif berjalan normal saat dipindahkan atau dijalankan via Live Server.
 
+**6. Audit Keseluruhan**
 
+#### **A. Penjelasan Audit & Integrasi**
+Pada tahap ini, dilakukan audit menyeluruh terhadap ketiga halaman situs web (`index.html`, `kegiatan.html`, dan `daftar.html`) untuk memastikan responsivitas antarmuka, aksesibilitas keyboard, kevalidan kode HTML, serta kelancaran tautan antarhalaman sebelum dilakukan commit integrasi akhir.
 
+#### **B. Aturan dan Langkah Audit**
+1. **Aksesibilitas Keyboard:** Menguji semua elemen navigasi dan formulir agar dapat difokuskan serta diakses menggunakan tombol `Tab` dan `Enter`.
+2. **Pengujian Responsivitas & Perbesaran:** Menguji tampilan situs pada lebar layar `320px` (layar HP), `1200px` (desktop), serta perbesaran (*zoom*) hingga 200%.
+3. **Validasi HTML:** Memeriksa tidak adanya kesalahan sintaks pada berkas HTML.
+4. **Pemeriksaan Tautan:** Memastikan seluruh tautan navigasi dan tombol berfungsi normal tanpa menghasilkan galat 404.
+
+#### **C. Catatan Pengamatan & Hasil Uji**
+
+* **Tindakan yang Dilakukan:**
+  * Menavigasi situs menggunakan tombol `Tab` pada keyboard untuk menguji aksesibilitas focus ring pada elemen interaktif.
+  * Membuka Developer Tools browser (`F12`), lalu menguji antarmuka pada tampilan `320px`, `1200px`, serta melakukan perbesaran layar (*zoom*).
+  * Memeriksa seluruh tautan navigasi di setiap halaman untuk memastikan tidak ada *broken link*.
+  * Melakukan commit integrasi ke Git setelah seluruh pengujian berhasil.
+
+* **Hasil Nyata (Actual Result):**
+  * Seluruh tombol dan menu navigasi dapat diakses penuh via keyboard.
+  * Tampilan situs fleksibel dan rapi pada ukuran `320px`, `1200px`, serta saat di-zoom tanpa ada elemen yang saling bertumpukan.
+  * Seluruh tautan terhubung dengan benar tanpa *broken link* atau pesan error `404 Not Found`.
+  * Seluruh halaman terintegrasi dengan konsisten.
+
+| Halaman | Kasus | Harapan | Hasil Nyata | Status / Bukti |
+| :--- | :--- | :--- | :--- | :--- |
+| **Semua Halaman** | Uji keyboard (`Tab` & `Enter`) | Elemen navigasi dan tombol dapat difokuskan & dibuka via keyboard | Focus ring berpindah lancar dan seluruh tautan dapat diakses | Berhasil (Lihat `bukti/`) |
+| **`index.html`** | Uji layar 320px, 1200px, & Zoom | Tampilan beranda konsisten dan responsif di berbagai ukuran | Layout menyesuaikan lebar layar tanpa horizontal scroll berlebih | Berhasil (Lihat `bukti/`) |
+| **`kegiatan.html`** | Uji layar 320px, 1200px, & Zoom | Konten dan gambar kegiatan tampil proporsional | Aset gambar dan teks tetap rapi di layar HP maupun desktop | Berhasil (Lihat `bukti/`) |
+| **`daftar.html`** | Uji layar 320px, 1200px, & Zoom | Formulir pendaftaran tetap rapi dan tidak tumpang tindih | Input field, radio button, dan tombol submit mudah diakses | Berhasil (Lihat `bukti/`) |
+| **Semua Halaman** | Validasi HTML | Kode HTML bebas dari kesalahan sintaks | Struktur HTML sesuai standar W3C tanpa pesan error | Berhasil (Lihat `bukti/`) |
+| **Semua Halaman** | Pemeriksaan Tautan (*Link*) | Seluruh tautan navigasi berfungsi tanpa link gagal | Semua tautan terhubung lancar lintas halaman | Berhasil (Lihat `bukti/`) |
+
+**8. Troubleshooting dan AI Use Statement**
+
+#### **A. Tabel Troubleshooting**
+
+| Gejala | Pemeriksaan / Solusi |
+| :--- | :--- |
+| **Halaman tidak berubah** | Simpan berkas (`Ctrl + S`), pastikan Live Server aktif, lalu *refresh* URL server yang benar di browser. |
+| **404 Not Found** | Periksa kembali susunan path, lokasi folder, serta kapitalisasi nama berkas (huruf besar/kecil). |
+| **CSS tidak cocok / tidak tampil** | Memastikan file CSS termuat di HTML, memeriksa kekeliruan *selector*, tata urutan *cascade*, serta memeriksa tab *Computed* pada DevTools. |
+| **ReferenceError / SyntaxError** | Membaca baris error pada *Console* browser, memeriksa *scope* variabel, serta kelengkapan pasangan tanda kurung. |
+| **Elemen null** | Memeriksa kembali penulisan *selector* JavaScript serta memastikan *script* dipanggil setelah DOM selesai dimuat. |
+| **Data tidak sesuai** | Memeriksa alur *parsing* data, pengelolaan *state*, serta hasil *render* pada elemen HTML target. |
+
+---
+
+#### **B. AI Use Statement**
+
+* **Alat AI yang Digunakan:** Gemini (Google AI)
+* **Tujuan Penggunaan:** 
+  * Penjelasan konsep pemograman web, navigasi git, serta diagnosa galat (*troubleshooting*).
+  * Pembuatan draf struktur laporan `README.md` dan ringkasan langkah-langkah audit.
+* **Bagian Bantuan:** 
+  * Konsultasi penyelesaian kendala Git *merge conflict* dan konfigurasi repository.
+  * Penyusunan format draf dokumentasi/laporan praktikum.
+* **Verifikasi Hasil:**
+  * Seluruh kode HTML, CSS, dan JavaScript diuji secara langsung menggunakan browser dan DevTools.
+  * Solusi Git diverifikasi dan dijalankan mandiri melalui Terminal/CMD.
+  * Tidak ada data rahasia, kata sandi (*password*), API *key*, maupun data sensitif mahasiswa yang dimasukkan ke dalam AI
+
+> **Catatan Diagnosis Aman:**  
+> Seluruh permasalahan teknis diselesaikan dengan melokalisasi sumber masalah, membaca pesan error/bukti pengujian, melakukan perbaikan pada satu penyebab spesifik, dan menjalankan pengujian ulang
